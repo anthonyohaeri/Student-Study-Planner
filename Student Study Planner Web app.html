@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Study Planner</title>
+<style>
+body{
+font-family:Arial;
+background:#e6f0ff;
+}
+.container{
+width:350px;
+margin:50px auto;
+background:white;
+padding:15px;
+border-radius:5px;
+}
+
+h2{text-align:center;}
+
+input, select{
+width:100%;
+padding:5px;
+margin-bottom:10px;
+}
+
+button{
+width:100%;
+padding:5px;
+background:#4CAF50;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+ul{padding:0;}
+li{
+list-style:none;
+padding:5px;
+border-bottom:1px solid #ccc;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h2>My Study Planner</h2>
+
+<input type="text" id="subjectInput" placeholder="Enter Subject">
+<input type="text" id="taskInput" placeholder="Enter Task">
+<select id="daySelect">
+<option value="Monday">Monday</option>
+<option value="Tuesday">Tuesday</option>
+<option value="Wednesday">Wednesday</option>
+<option value="Thursday">Thursday</option>
+<option value="Friday">Friday</option>
+<option value="Saturday">Saturday</option>
+<option value="Sunday">Sunday</option>
+</select>
+
+<button onclick="addTask()">Add to Planner</button>
+
+<ul id="plannerList"></ul>
+
+</div>
+
+<script>
+function addTask(){
+var subj=document.getElementById("subjectInput").value;
+var task=document.getElementById("taskInput").value;
+var day=document.getElementById("daySelect").value;
+
+if(subj==""||task==""){alert("Enter both subject and task");return;}
+
+var li=document.createElement("li");
+li.innerText=day+": "+subj+" - "+task;
+
+li.onclick=function(){
+this.style.textDecoration="line-through";
+}
+
+document.getElementById("plannerList").appendChild(li);
+
+document.getElementById("subjectInput").value="";
+document.getElementById("taskInput").value="";
+}
+</script>
+
+</body>
+</html>
